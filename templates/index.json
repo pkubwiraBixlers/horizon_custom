@@ -62,6 +62,11 @@
       "settings": {
         "media_type_1": "image",
         "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -278,10 +283,21 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "split_hero_z4BRJB": {
+      "type": "split-hero",
+      "name": "t:names.split_banner",
+      "settings": {
+        "image_1": "shopify://shop_images/two-people-surfing-in-blue-choppy-water.jpg",
+        "image_2": "shopify://shop_images/sliced-pumpkin-pie.jpg",
+        "split_image_button_label": "Discover",
+        "split_image_button_url": "shopify://pages/custom-page-2"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "split_hero_z4BRJB"
   ]
 }
