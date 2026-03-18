@@ -1,0 +1,88 @@
+
+{{ 'section-split-image-hero.css' | asset_url | stylesheet_tag}}
+
+{%- comment -%}
+two images side by side with one CTA in bottom-center of screen
+mobile will show only the 1 fisrt image
+{%- endcomment -%}
+
+{%-liquid
+  assign  main_image =  section.settings.image_1 
+  assign  secondary_image =  section.settings.image_2
+
+  assign is_split = false
+  if main_image and secondary_image
+    assign is_split = true
+  endif
+
+-%}
+
+<div class="split_image_wrapper">
+ {% if section.settings.split_image_button_label %}
+   {% if section.settings.split_image_button_url %}
+      <a class="split-section-btn" href="{{section.settings.split_image_button_url}}">
+        {{ section.settings.split_image_button_label }}
+      </a>  
+
+    {% else %}
+      <a class="split-section-btn" href="/" ="true" aria-disabled="true" style="pointer-events: none;" >Add url</a>
+    {% endif %}
+
+  {% endif %}
+  {%- comment -%}
+    render any of the images that's available or both (split)
+  {%- endcomment -%}
+  {% if main_image %}
+    <img id="primary_image" class="split_image" src="{{ main_image | image_url: width: 1000, height: 1000 }}" />
+  {% endif %}
+  {% if secondary_image %}
+    <img id="secondary_image" class="split_image" src="{{ secondary_image | image_url: width: 1000, height: 1000 }}" />
+  {% endif %}
+</div
+
+{% schema %}
+{
+  "name": "t:names.split_banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+    },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Primary Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Sondary Image"
+    },
+    { 
+      "type": "text",
+      "id": "split_image_button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "split_image_button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.split_banner",
+    }
+  ]   
+}
+{% endschema %}
+
+{% doc %}
+  @param {boolean} is_split - A boolean value
+  @param {string} main_image - A string value
+  @param {string} [secondary_image] - A string value
+
+  @example
+  {% render 'As followes: ', is_split: true, main_image: 'https://adaejewelry.com/cdn/shop/files/silverhoops_32.png', secondary_image: 'https://adaejewelry.com/cdn/shop/files/silverhoops_32.png' %}
+{% enddoc %}

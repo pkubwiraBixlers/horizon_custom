@@ -1,0 +1,50 @@
+
+
+.split_image_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 200px;
+  object-fit: cover;
+  justify-content: space-evenly;
+  position: relative;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: row;
+  }
+  @media screen and (max-width: 749px) {
+    flex-direction: column;
+  }
+}
+
+.split_image {
+  @media screen and (min-width: 750px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 749px) {
+    width: 100%;
+  }
+
+}
+
+.split-section-btn {
+  position: absolute;
+  top: 80%;
+  /* left: 50%; */
+  /* translate: 0 0%; */
+  z-index: 2;
+  border: 2px solid var(--color-background);
+  padding: 10px 30px;
+  text-decoration: none;
+  text-decoration-color: none;
+  color: var(--color-background);
+  @media screen and (min-width: 749px) {
+    
+  }
+
+  @media screen and (max-width: 750px) {
+
+  }
+
+}
